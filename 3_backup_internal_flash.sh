@@ -15,11 +15,21 @@ if test -f backups/internal_flash_backup.bin; then
     exit 1
 fi
 
+echo "This step will overwrite the contents of the SPI flash that we backed up in step 2."
+echo "It will be restored in step 5. Continue? (Y/y)"
+read -n 1 -r
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    echo "Aborted."
+    exit 1
+fi
+
 echo "Generating encrypted flash image from backed up data..."
 if ! python3 python/tcm_encrypt.py backups/flash_backup.bin backups/itcm_backup.bin payload/payload.bin new_flash_image.bin; then
     echo "Failed to build encrypted flash image."
     exit 1
 fi
+
 
 echo "Running flashloader..."
 
