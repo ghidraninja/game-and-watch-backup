@@ -26,7 +26,6 @@ VAR_program_erase=$(printf '0x%08x\n' $(get_symbol "program_erase"))
 if ! openocd -f openocd/interface_"$1".cfg \
     -c "init;" \
     -c "echo \"Resetting device\";" \
-    -c "reset halt;" \
     -c "echo \"Programming ELF\";" \
     -c "load_image ${ELF};" \
     -c "reset halt;" \
@@ -48,9 +47,9 @@ fi
 
 echo "Loaded flashloader, flashing SPI, please wait."
 
-echo "\t(If this takes more than 2 minutes something went wrong.)"
-echo "\t(If the screen blinks rapidly, something went wrong.)"
-echo "\t(If the screen blinks slowly, everything worked but the script didn't detect it)"
+echo "    (If this takes more than 2 minutes something went wrong.)"
+echo "    (If the screen blinks rapidly, something went wrong.)"
+echo "    (If the screen blinks slowly, everything worked but the script didn't detect it)"
 while true; do
     DONE_MAGIC=$(openocd -f  openocd/interface_${1}.cfg -c "init; mdw ${VAR_program_done}" -c "exit;" 2>&1 | grep ${VAR_program_done} | cut -d" " -f2)
     if [[ "$DONE_MAGIC" == "cafef00d" ]]; then
