@@ -25,6 +25,7 @@ echo "Running flashloader..."
 
 if ! ./scripts/flashloader.sh $ADAPTER new_flash_image.bin; then
     echo "Flashloader failed, check debug connection and try again."
+    exit 1
 fi
 
 echo "Flash successfully flashed. Now do the following procedure:"
