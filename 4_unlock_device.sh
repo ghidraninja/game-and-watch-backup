@@ -28,7 +28,7 @@ echo "Unlocking device... (Takes up to 30 seconds.)"
 if ! openocd -f openocd/interface_"$1".cfg \
     -c "init;" \
     -c "halt;" \
-    -f openocd/rdp0.cfg; then
+    -f openocd/rdp0.cfg >/dev/null 2>&1; then
     echo "Unlocking device failed."
     exit 1
 fi
