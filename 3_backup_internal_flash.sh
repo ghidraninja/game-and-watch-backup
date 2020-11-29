@@ -8,6 +8,7 @@ if [[ $# -ne 1 ]]; then
 fi
 
 ADAPTER=$1
+mkdir -p logs
 
 if test -f backups/internal_flash_backup.bin; then
     echo "Already have a backup in backups/internal_flash_backup.bin, refusing to overwrite."
@@ -40,7 +41,7 @@ if ! openocd -f openocd/interface_"$1".cfg \
     -c "init;" \
     -c "halt;" \
     -c "dump_image backups/internal_flash_backup.bin 0x24000000 131072" \
-    -c "exit;" >/dev/null 2>&1; then
+    -c "exit;" >>logs/3_openocd.log 2>&1; then
     echo "Dumping internal flash failed."
     exit 1
 fi

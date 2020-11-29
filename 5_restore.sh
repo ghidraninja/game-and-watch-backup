@@ -18,7 +18,7 @@ if ! test -f backups/flash_backup.bin; then
 fi
 
 ADAPTER=$1
-
+mkdir -p logs
 echo "Ok, restoring original firmware! (We will not lock the device, so you won't have to repeat this procedure!)"
 
 
@@ -27,7 +27,7 @@ if ! openocd -f openocd/interface_"$1".cfg \
     -c "init;" \
     -c "halt;" \
     -c "program backups/internal_flash_backup.bin 0x08000000 verify;" \
-    -c "exit;" >/dev/null 2>&1; then
+    -c "exit;" >>logs/5_openocd.log 2>&1; then
     echo "Restoring internal flash failed. Check debug connection and try again."
     exit 1
 fi
@@ -40,3 +40,4 @@ if ! ./scripts/flashloader.sh $ADAPTER backups/flash_backup.bin; then
 fi
 
 echo "Success, your device should be running the original firmware again!"
+echo "(You should power-cycle the device now)"
