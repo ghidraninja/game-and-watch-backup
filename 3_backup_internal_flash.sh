@@ -1,0 +1,56 @@
+#!/bin/bash
+
+set -e
+
+if [[ $# -ne 1 ]]; then
+    echo "Usage: $0 <Adapter: jlink or stlink>"
+    exit 1
+fi
+
+ADAPTER=$1
+
+if test -f backups/internal_flash_backup.bin; then
+    echo "Already have a backup in backups/internal_flash_backup.bin, refusing to overwrite."
+    exit 1
+fi
+
+echo "Generating encrypted flash image from backed up data..."
+if ! python3 python/tcm_encrypt.py backups/flash_backup.bin backups/itcm_backup.bin payload/payload.bin new_flash_image.bin; then
+    echo "Failed to build encrypted flash image."
+    exit 1
+fi
+
+echo "Running flashloader..."
+
+if ! ./scripts/flashloader.sh $ADAPTER new_flash_image.bin; then
+    echo "Flashloader failed, check debug connection and try again."
+fi
+
+echo "Flash flashed. Now do the following procedure:"
+echo "- Disconnect power from the device"
+echo "- Power it again"
+echo "- Press and hold the power button"
+echo "- Press return (while still holding the power button)!"
+
+
+read -n 1
+
+echo "Dumping internal flash..."    
+if ! openocd -f openocd/interface_"$1".cfg \
+    -c "init;" \
+    -c "halt;" \
+    -c "dump_image backups/internal_flash_backup.bin 0x24000000 131072" \
+    -c "exit;" >/dev/null 2>&1; then
+    echo "Dumping internal flash failed."
+    exit 1
+fi
+
+echo "Verifying internal flash backup..."
+if ! shasum --check shasums/internal_flash_backup.bin.sha1 >/dev/null 2>&1; then
+    echo "The backup of the internal flash failed. Please try again."
+    exit 1
+fi
+
+rm new_flash_image.bin
+
+echo "Device backed up successful"
