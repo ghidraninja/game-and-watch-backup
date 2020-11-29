@@ -15,7 +15,7 @@ if test -f backups/internal_flash_backup.bin; then
     exit 1
 fi
 
-echo "This step will overwrite the contents of the SPI flash that we backed up in step 2."
+echo "This step will overwrite the contents of the SPI flash chip that we backed up in step 2."
 echo "It will be restored in step 5. Continue? (Y/y)"
 read -n 1 -r
 if [[ ! $REPLY =~ ^[Yy]$ ]]

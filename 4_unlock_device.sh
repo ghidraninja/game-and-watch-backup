@@ -33,4 +33,5 @@ if ! openocd -f openocd/interface_"$1".cfg \
     exit 1
 fi
 
-echo "Congratulations, your device has been unlocked. Please power-cycle it for the changes to take full effect."
+echo "Congratulations, your device has been unlocked."
+echo "Please power-cycle it for the changes to take full effect."
