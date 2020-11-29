@@ -26,7 +26,7 @@ if ! ./scripts/flashloader.sh $ADAPTER new_flash_image.bin; then
     echo "Flashloader failed, check debug connection and try again."
 fi
 
-echo "Flash flashed. Now do the following procedure:"
+echo "Flash successfully flashed. Now do the following procedure:"
 echo "- Disconnect power from the device"
 echo "- Power it again"
 echo "- Press and hold the power button"
@@ -53,4 +53,4 @@ fi
 
 rm new_flash_image.bin
 
-echo "Device backed up successful"
+echo "Device backed up successfully"

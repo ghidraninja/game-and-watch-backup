@@ -19,13 +19,8 @@ fi
 
 ADAPTER=$1
 
-echo "Ok, restoring original firmware!"
+echo "Ok, restoring original firmware! (We will not lock the device, so you won't have to repeat this procedure!)"
 
-echo "Restoring SPI flash..."
-if ! ./scripts/flashloader.sh $ADAPTER backups/flash_backup.bin; then
-    echo "Restoring SPI flash failed. Check debug connection and try again."
-    exit 1
-fi
 
 echo "Restoring internal flash..."
 if ! openocd -f openocd/interface_"$1".cfg \
@@ -34,6 +29,13 @@ if ! openocd -f openocd/interface_"$1".cfg \
     -c "program backups/internal_flash_backup.bin 0x08000000 verify;" \
     -c "exit;" >/dev/null 2>&1; then
     echo "Restoring internal flash failed. Check debug connection and try again."
+    exit 1
+fi
+
+
+echo "Restoring SPI flash..."
+if ! ./scripts/flashloader.sh $ADAPTER backups/flash_backup.bin; then
+    echo "Restoring SPI flash failed. Check debug connection and try again."
     exit 1
 fi
 
