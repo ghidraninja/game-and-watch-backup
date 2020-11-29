@@ -49,3 +49,12 @@ As long as your electrical connections are right and you didn't short/overvolt a
 
 If a script fails and the device does not work after power-cycling, repeat the script. If it fails again, try to hold the power button of the device while executing the script.
 
+
+
+## Sources for binaries
+
+The binaries in firmware/ are based on:
+
+- [flashloader](https://github.com/ghidraninja/game-and-watch-flashloader)
+- [flashdumper](https://github.com/ghidraninja/game-and-watch-flashdumper)
+
