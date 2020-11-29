@@ -39,6 +39,10 @@ The scripts are split into 5 parts:
 - 4_unlock_device.sh - This will disable the active read protection. This will erase the internal flash of the STM32.
 - 5_restore.sh - This will restore the original firmware.
 
+Just run these scripts *from the checked out directory* one after each other. All scripts are safe to be re-run in case of error.
+
+Ensure that you keep your backup in a safe place so you can always recover. Don't ask us for flash dumps & co, we will not share them.
+
 ## What if something goes wrong
 
 As long as your electrical connections are right and you didn't short/overvolt anything, chances are high that it's rescuable:
