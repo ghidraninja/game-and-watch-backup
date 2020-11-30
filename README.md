@@ -21,12 +21,21 @@ Game & Watch damaged. Use these tools at your own risk. If you feel like you don
 When connecting the debugger ensrue that at least SWDIO, SWDCLK and GND are connected. Do *not* under any circumstances connect 3.3V to the VDD connection. If your debug probe (for example ST-Link clones) does not have a VTREF connector, just leave VDD unconnected. Connecting 3.3V to VDD will likely destroy your SPI flash.
 
 
-## Ubuntu setup
+### Ubuntu setup
 
 Install the required tools:
 
 ```
 sudo apt-get install gcc-arm-none-eabi binutils-arm-none-eabi openocd python3
+```
+
+### Mac Setup
+
+Using homebrew:
+```
+brew install openocd
+brew tap ArmMbed/homebrew-formulae
+brew install arm-none-eabi-gcc
 ```
 
 ## Usage
