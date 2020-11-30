@@ -26,7 +26,7 @@ When connecting the debugger ensrue that at least SWDIO, SWDCLK and GND are conn
 Install the required tools:
 
 ```
-sudo apt-get install gcc-arm-none-eabi binutils-arm-none-eabi gdb-arm-none-eabi openocd python3
+sudo apt-get install gcc-arm-none-eabi binutils-arm-none-eabi openocd python3
 ```
 
 ## Usage
