@@ -16,4 +16,9 @@ if ! arm-none-eabi-objdump -v >/dev/null 2>&1; then
     exit 1
 fi
 
+if ! bc -v >/dev/null 2>&1; then
+    echo "Could not find bc. Please validate that it's installed and in PATH."
+    exit 1
+fi
+
 echo "Looks good!"
