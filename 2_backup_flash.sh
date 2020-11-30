@@ -19,7 +19,7 @@ mkdir -p backups
 mkdir -p logs
 
 echo "Attempting to dump flash using adapter $1."
-echo "Running OpenOCD... (This will take roughly 30 seconds, you Game and Watch screen will blink in between.)"
+echo "Running OpenOCD... (This will take roughly 30 seconds, your Game and Watch screen will blink in between.)"
 if ! openocd -f openocd/flash_"$1".cfg >>logs/2_openocd.log 2>&1; then
     echo "Failed to dump SPI flash from device. Verify debug connection and try again."
     exit 1
