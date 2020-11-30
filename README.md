@@ -49,7 +49,27 @@ As long as your electrical connections are right and you didn't short/overvolt a
 
 If a script fails and the device does not work after power-cycling, repeat the script. If it fails again, try to hold the power button of the device while executing the script.
 
+#### Something goes wrong during Step 1 & 2
 
+Your device was not modified by the scripts, so it should just continue to work after a power cycle.
+
+#### Something goes wrong during Step 3
+
+Step 3 will change the internal flash of the device. If this step fails it will leave your device in a bricked state. To recover from it run:
+
+```
+./scripts/flashloader.sh <stlink or jlink> ./backups/flash_backup.bin
+```
+
+If the script can't connect to the device, press & hold down power on the device while running flashloader & try to FULLY powercycle the target between attempts.
+
+#### Something goes wrong during Step 4
+
+Step 4 will cause a mass erase, and leave your device empty. To restore it, run script 5.
+
+#### Something goes wrong during Step 5
+
+Step 5 should succeed, if it doesn't: Try to run the script while holding down the power button of the Game & Watch. Try power-cycling the target in between attempts.
 
 ## Sources for binaries
 
