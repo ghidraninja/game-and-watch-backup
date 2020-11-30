@@ -13,7 +13,7 @@ function get_symbol {
 	name=$1
 	objdump_cmd="${objdump} -t ${ELF}"
 	size=$(${objdump_cmd} | grep " $name" | cut -d " " -f1 | tr 'a-f' 'A-F')
-	printf "ibase=16\n${size}\n" | bc
+	printf "$((16#${size}))\n"
 }
 
 VAR_program_size=$(printf '0x%08x\n' $(get_symbol "program_size"))
