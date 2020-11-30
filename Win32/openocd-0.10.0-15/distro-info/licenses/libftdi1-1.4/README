@@ -1,0 +1,52 @@
+--------------------------------------------------------------------
+libftdi version 1.4
+--------------------------------------------------------------------
+
+libftdi - A library (using libusb) to talk to FTDI's UART/FIFO chips
+including the popular bitbang mode.
+
+The following chips are supported:
+* FT230X
+- FT4232H / FT2232H
+- FT232R  / FT245R
+- FT2232L / FT2232D / FT2232C
+- FT232BM / FT245BM (and the BL/BQ variants)
+- FT8U232AM / FT8U245AM
+
+libftdi requires libusb 1.x.
+
+The AUTHORS file contains a list of all the people
+that made libftdi possible what it is today.
+
+Changes
+-------
+* New ftdi_usb_open_bus_addr() open function
+* Use BM/R series baud rate computation for FT230X
+* ftdi_get_error_string() now returns const char*
+* C++ API: Ability to open devices with empty descriptor strings
+* C++ API: Fix enumerations for buffer purge and modem controls
+* small build fixes and improvements in the python examples
+* ftdi_eeprom / eeprom handling:
+  * New API function: ftdi_eeprom_get_strings()
+  * Fix USE_SERIAL handling for 230X type chips
+  * Make ftdi_read_eeprom_location() endianness independent
+  * Fix flashing of FT245R
+
+You'll find the newest version of libftdi at:
+https://www.intra2net.com/en/developer/libftdi
+
+
+Quick start
+-----------
+mkdir build
+cd build
+
+cmake -DCMAKE_INSTALL_PREFIX="/usr" ../
+make
+make install
+
+More verbose build instructions are in "README.build"
+
+--------------------------------------------------------------------
+www.intra2net.com                             2003-2017 Intra2net AG
+--------------------------------------------------------------------
