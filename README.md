@@ -58,3 +58,6 @@ The binaries in firmware/ are based on:
 - [flashloader](https://github.com/ghidraninja/game-and-watch-flashloader)
 - [flashdumper](https://github.com/ghidraninja/game-and-watch-flashdumper)
 
+## Windows version
+
+Conversion of bash shell scripts to Powershell scripts is proceeding at an infenetely slow pace
