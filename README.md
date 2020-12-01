@@ -60,4 +60,11 @@ The binaries in firmware/ are based on:
 
 ## Windows version
 
-Conversion of bash shell scripts to Powershell scripts is proceeding at an infenetely slow pace
+Conversion of bash shell scripts to Powershell scripts is proceeding at an infinetely slow pace
+
+Powershell setup
+- Open Powershell as Administrator
+- Launch command "Set-ExecutionPolicy Unrestricted"
+- Launch script ".\0_installtools.ps1"
+
+Usage is the same as per Linux!

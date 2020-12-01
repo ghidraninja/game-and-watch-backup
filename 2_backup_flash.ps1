@@ -1,30 +1,41 @@
 Clear-Host
+Write-Host "Instructions:"
+Write-Host "- Type in your Adapter"
+Write-Host "- Press and hold the power button"
+Write-Host "- Press return (while still holding the power button)!"
+Write-Host " "
 Write-Host "Type your Adapter: jlink, stlink"
 $adapter = Read-Host
  
-$path = $PSScriptRoot + "\backups"
-$pathSha = $PSScriptRoot + "\shasums"
 if (!(Test-Path -Path $path)) {
   New-Item -Path $PSScriptRoot -Name "backups" -ItemType "directory"
 }
 
-openocd-0.10.0-15_win/bin/openocd.exe -s $PSScriptRoot"\openocd" -f flash_"$adapter".cfg 
+openocd -s $PSScriptRoot"\openocd" -f flash_"$adapter".cfg 
 
 Write-Host "Validating ITCM dump..."
 
-if(($pathSha"\itcm_backup.bin.sha1") neq (Get-FileHash -Path $path\"itcm_backup.bin" algorithm -SHA1)){
+$ShaITCM = "ca71a54c0a22cca5c6ee129faee9f99f3a346ca0"
+$pathITCM = $PSScriptRoot + "\backups\itcm_backup.bin"
+if (!(($pathShaITCM) = (Get-FileHash -Path $pathITCM -algorithm SHA1))){
   Write-Host "Failed to correctly dump ITCM. Restart Game & Watch and try again."
+  Exit 1
 }
 
+$in = $PSScriptRoot + "\backups\flash_backup.bin"
+$out = $PSScriptRoot + "\flash_backup_checksummed.bin"
 Write-Host "Extracting checksummed part..."
-MinGW\msys\dd.exe if=backups/flash_backup.bin of=backups/flash_backup_checksummed.bin count=1040384
+dd if=$in of=$out count=1040384 bs=1
 
 Write-Host "Validating checksum..."
-if(($pathSha"\flash_backup_checksummed.bin.sha1") neq (Get-FileHash -Path $path\"flash_backup_checksummed.bin" algorithm -SHA1)){
+$ShaBackup = "eea70bb171afece163fb4b293c5364ddb90637ae"
+$pathfullBackup = $PSScriptRoot + "\backups\flash_backup_checksummed.bin"
+if(!(($pathShaBackup) = (Get-FileHash -Path $pathfullBackup -algorithm SHA1))){
   Write-Host "Failed to verify checksum. Try again."
+  Exit 1
 }
 
-Remove-Item -Path $path\"flash_backup_checksummed.bin"
+Remove-Item -Path $out
 
 Write-Host "Looks good! Successfully backed up the (encrypted) SPI flash to flash_backup.bin!"
 
