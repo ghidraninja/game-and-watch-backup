@@ -33,7 +33,7 @@ sudo apt-get install gcc-arm-none-eabi binutils-arm-none-eabi openocd python3
 
 Using homebrew:
 ```
-brew install openocd
+brew install --HEAD openocd
 brew tap ArmMbed/homebrew-formulae
 brew install arm-none-eabi-gcc
 ```
