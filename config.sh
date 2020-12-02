@@ -1,7 +1,7 @@
 #!/bin/bash
 
 OPENOCD=${OPENOCD:-$(which openocd)}
-OPENOCD_VERSION=$(openocd -v 2> >(cut -f 4 -d\ ) |head -1)
+OPENOCD_VERSION=$(${OPENOCD} -v 2> >(cut -f 4 -d\ ) |head -1)
 ADAPTER=$1
 
 
