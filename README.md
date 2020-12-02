@@ -14,6 +14,7 @@ What you'll need:
 The tools in this repository will modify both the internal and the external flash of the Game and Watch.
 While we tested the scripts to our best ability, we can not guarantee that there won't be failures that will leave your
 Game & Watch damaged. Use these tools at your own risk. If you feel like you don't understand what you're doing it might be best to let someone with more experience help (and teach) you!
+Feel free to join our [discord channel](https://discord.gg/YM2crykp) and ask any support questions in *#game-and-watch-support*.
 
 
 ## Connecting the debugger
@@ -30,6 +31,25 @@ sudo apt-get install gcc-arm-none-eabi binutils-arm-none-eabi openocd python3
 ```
 
 Note: The version of openocd included in Ubuntu 20.04 (0.10.0) does not include functionality that is needed by these scripts. A build from the unreleased master branch is needed. Please install a newer version either by building it yourself, or by installing a prebuilt package, e.g. from [this nightly build](https://github.com/kbeckmann/ubuntu-openocd-git-builder), using [xPack](https://xpack.github.io/openocd/) or similar.
+
+### Alternative openocd location
+
+If you used the aforementioned nightly openocd build, it will reside in the /opt directory.
+
+To use that specific version you can either export the variable OPENOCD or prefix your commands with the variable declaration:
+
+```
+export OPENOCD="/opt/openocd-git/bin/openocd"
+./1_sanity_check.sh
+./2_....
+```
+OR
+```
+OPENOCD="/opt/openocd-git/bin/openocd" ; ./1_sanity_check.sh
+OPENOCD="/opt/openocd-git/bin/openocd" ; ./2_....
+```
+
+Finally you could just hardwire some variables in 'config.sh'
 
 ### Mac Setup
 
