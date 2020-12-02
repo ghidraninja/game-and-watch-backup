@@ -1,17 +1,9 @@
 #!/bin/bash
 
-
-if [[ $# -ne 1 ]]; then
-    echo "Usage: $0 <Adapter: jlink or stlink>"
-    exit 1
-fi
-
-ADAPTER=$1
-mkdir -p logs
-
+source config.sh $1
 
 echo "Installing on internal flash..."
-if ! openocd -f openocd/interface_"$1".cfg \
+if ! ${OPENOCD} -f openocd/interface_"${ADAPTER}".cfg \
     -c "init;" \
     -c "halt;" \
     -c "program prebuilt/gw_retrogo_nes.elf;" \

@@ -1,11 +1,6 @@
 #!/bin/bash
 
-
-if [[ $# -ne 1 ]]; then
-    echo "Usage: $0 <Adapter: jlink or stlink>"
-    exit 1
-fi
-
+source config.sh $1
 
 if ! test -f backups/internal_flash_backup.bin; then
     echo "No backup of internal flash found in backups/internal_flash_backup.bin"
@@ -17,13 +12,11 @@ if ! test -f backups/flash_backup.bin; then
     exit 1
 fi
 
-ADAPTER=$1
-mkdir -p logs
 echo "Ok, restoring original firmware! (We will not lock the device, so you won't have to repeat this procedure!)"
 
 
 echo "Restoring internal flash..."
-if ! openocd -f openocd/interface_"$1".cfg \
+if ! ${OPENOCD} -f openocd/interface_"${ADAPTER}".cfg \
     -c "init;" \
     -c "halt;" \
     -c "program backups/internal_flash_backup.bin 0x08000000 verify;" \

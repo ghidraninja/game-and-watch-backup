@@ -2,13 +2,7 @@
 
 set -e
 
-if [[ $# -ne 1 ]]; then
-    echo "Usage: $0 <Adapter: jlink or stlink>"
-    exit 1
-fi
-
-ADAPTER=$1
-mkdir -p logs
+source config.sh $1
 
 if test -f backups/internal_flash_backup.bin; then
     echo "Already have a backup in backups/internal_flash_backup.bin, refusing to overwrite."
@@ -48,7 +42,7 @@ echo "- Press return (while still holding the power button)!"
 read -n 1
 
 echo "Dumping internal flash..."    
-if ! openocd -f openocd/interface_"$1".cfg \
+if ! ${OPENOCD} -f openocd/interface_"${ADAPTER}".cfg \
     -c "init;" \
     -c "halt;" \
     -c "dump_image backups/internal_flash_backup.bin 0x24000000 131072" \
