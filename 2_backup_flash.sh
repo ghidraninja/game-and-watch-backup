@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source config.sh $1
+
 if [[ $# -ne 1 ]]; then
     echo "Usage: backup_flash.sh <Adapter: jlink or stlink>"
     exit 1
@@ -10,17 +12,12 @@ if test -f backups/flash_backup.bin; then
     exit 1
 fi
 
-ADAPTER=$1
-
 echo "Make sure your Game & Watch is turned on and in the time screen. Press return when ready!"
 read -n 1
 
-mkdir -p backups
-mkdir -p logs
-
-echo "Attempting to dump flash using adapter $1."
+echo "Attempting to dump flash using adapter ${ADAPTER}."
 echo "Running OpenOCD... (This will take roughly 30 seconds, your Game and Watch screen will blink in between.)"
-if ! openocd -f openocd/flash_"$1".cfg >>logs/2_openocd.log 2>&1; then
+if ! ${OPENOCD} -f openocd/flash_"${ADAPTER}".cfg >>logs/2_openocd.log 2>&1; then
     echo "Failed to dump SPI flash from device. Verify debug connection and try again."
     exit 1
 fi

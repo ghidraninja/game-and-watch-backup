@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source config.sh $1
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ELF=firmware/flash_programmer.elf
 ADDRESS=0
@@ -23,7 +25,7 @@ VAR_program_done=$(printf '0x%08x\n' $(get_symbol "program_done"))
 VAR_program_erase=$(printf '0x%08x\n' $(get_symbol "program_erase"))
 
 
-if ! openocd -f openocd/interface_"$1".cfg \
+if ! ${OPENOCD} -f openocd/interface_"${ADAPTER}".cfg \
     -c "init;" \
     -c "echo \"Resetting device\";" \
     -c "echo \"Programming ELF\";" \
@@ -51,7 +53,7 @@ echo "    (If this takes more than 2 minutes something went wrong.)"
 echo "    (If the screen blinks rapidly, something went wrong.)"
 echo "    (If the screen blinks slowly, everything worked but the script didn't detect it)"
 while true; do
-    DONE_MAGIC=$(openocd -f  openocd/interface_${1}.cfg -c "init; mdw ${VAR_program_done}" -c "exit;" 2>&1 | grep ${VAR_program_done} | cut -d" " -f2)
+    DONE_MAGIC=$(${OPENOCD} -f  openocd/interface_${ADAPTER}.cfg -c "init; mdw ${VAR_program_done}" -c "exit;" 2>&1 | grep ${VAR_program_done} | cut -d" " -f2)
     if [[ "$DONE_MAGIC" == "cafef00d" ]]; then
         echo "Done!"
         break;
