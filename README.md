@@ -102,10 +102,19 @@ Step 4 will cause a mass erase, and leave your device empty. To restore it, run 
 
 Step 5 should succeed, if it doesn't: Try to run the script while holding down the power button of the Game & Watch. Try power-cycling the target in between attempts.
 
+### Getting help and contributing
+
+Feel free to join our [discord channel](https://discord.gg/YM2crykp) and ask any support questions in *#game-and-watch-support*.
+
+Other channels:
+
+- *#game-and-watch-hacking* A channel for general talk about homebrew on the Game & Watch! Please, no ROMs, no flash dumps, etc, but any code related question or other hacking ideas very welcome.
+- *#replacement-pcb* In here we discuss the possibilities and development of replacement PCBs for the Game and Watch.
+
+
 ## Sources for binaries
 
 The binaries in firmware/ are based on:
 
 - [flashloader](https://github.com/ghidraninja/game-and-watch-flashloader)
 - [flashdumper](https://github.com/ghidraninja/game-and-watch-flashdumper)
-
