@@ -14,7 +14,7 @@ What you'll need:
 The tools in this repository will modify both the internal and the external flash of the Game and Watch.
 While we tested the scripts to our best ability, we can not guarantee that there won't be failures that will leave your
 Game & Watch damaged. Use these tools at your own risk. If you feel like you don't understand what you're doing it might be best to let someone with more experience help (and teach) you!
-Feel free to join our [discord channel](https://discord.gg/YM2crykp) and ask any support questions in *#game-and-watch-support*.
+Feel free to join our [discord channel](https://discord.gg/rE2nHVAKvn) and ask any support questions in *#game-and-watch-support*.
 
 
 ## Connecting the debugger
@@ -104,7 +104,7 @@ Step 5 should succeed, if it doesn't: Try to run the script while holding down t
 
 ### Getting help and contributing
 
-Feel free to join our [discord channel](https://discord.gg/YM2crykp) and ask any support questions in *#game-and-watch-support*.
+Feel free to join our [discord channel](https://discord.gg/rE2nHVAKvn) and ask any support questions in *#game-and-watch-support*.
 
 Other channels:
 
