@@ -110,6 +110,7 @@ Other channels:
 
 - *#game-and-watch-hacking* A channel for general talk about homebrew on the Game & Watch! Please, no ROMs, no flash dumps, etc, but any code related question or other hacking ideas very welcome.
 - *#replacement-pcb* In here we discuss the possibilities and development of replacement PCBs for the Game and Watch.
+- [game-and-watch-hacking wiki](https://github.com/ghidraninja/game-and-watch-hacking/wiki) A reference wiki all things hacking the Game & Watch. Including internals.
 
 
 ## Sources for binaries
