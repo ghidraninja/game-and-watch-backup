@@ -1,0 +1,11 @@
+openocd : Open On-Chip Debugger 0.10.0 (2019-08-28) [https://github.com/sysprogs/openocd]
+In C:\Users\lou\Desktop\Proj\NintendoGameNWatch\game-and-watch-backup-main\PS_5_restore.ps1:27 car:1
++ openocd -f $Interface_cfg -c 'init;' -c 'halt;' -c 'program' $backup  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Open On-Chip De...sprogs/openocd]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+Unexpected command line argument: C:\Users\lou\Desktop\Proj\NintendoGameNWatch\game-and-watch-backup-main\backups\internal_flash_backup.bin

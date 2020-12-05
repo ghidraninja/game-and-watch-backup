@@ -1,0 +1,1 @@
+Warn : deprecated option: -p/--pipe. Use '-c "gdb_port pipe; log_output openocd.log"' instead.

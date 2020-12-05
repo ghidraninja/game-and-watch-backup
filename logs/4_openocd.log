@@ -1,0 +1,40 @@
+openocd : Open On-Chip Debugger 0.10.0 (2019-08-28) [https://github.com/sysprogs/openocd]
+In C:\Users\lou\Desktop\Proj\NintendoGameNWatch\game-and-watch-backup-main\PS_4_unlock_device.ps1:32 car:1
++ openocd -f $Interface_cfg -c 'init;' -c 'halt;' -f $rdp0_config *>&1  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Open On-Chip De...sprogs/openocd]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+Info : The selected transport took over low-level target control. The results might differ compared to plain JTAG/SWD
+none separate
+
+Info : clock speed 1800 kHz
+Info : STLINK V2J33M25 (API v2) VID:PID 0483:374B
+Info : Target voltage: 3.239448
+Error: init mode failed (unable to connect to the target)
+
+
+openocd : Open On-Chip Debugger 0.10.0 (2019-08-28) [https://github.com/sysprogs/openocd]
+In C:\Users\lou\Desktop\Proj\NintendoGameNWatch\game-and-watch-backup-main\PS_4_unlock_device.ps1:32 car:1
++ openocd -f $Interface_cfg -c 'init;' -c 'halt;' -f $rdp0_config *>&1  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Open On-Chip De...sprogs/openocd]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+Info : The selected transport took over low-level target control. The results might differ compared to plain JTAG/SWD
+none separate
+
+Info : clock speed 1800 kHz
+Info : STLINK V2J33M25 (API v2) VID:PID 0483:374B
+Info : Target voltage: 3.241026
+Info : stm32h7x.cpu: hardware has 8 breakpoints, 4 watchpoints
+Info : Listening on port 3333 for gdb connections
+target halted due to debug-request, current mode: Handler HardFault
+xPSR: 0x81000003 pc: 0xfffffffe msp: 0x200111e0
+Reset and halt

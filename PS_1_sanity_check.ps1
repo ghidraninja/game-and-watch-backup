@@ -1,19 +1,22 @@
 Clear-Host
 Write-Host "Running sanity checks..."
 
-if (!(openocd -v) | out-null) {
+Invoke-Expression 'openocd -v'  *>&1 | Out-Null
+if(-not $LASTEXITCODE -eq 0){
     Write-Host "OpenOCD does not seem to be working. Please validate that you have it installed correctly!"
-    exit 1
+    break
 }
 
-if (!(python -V) | out-null){
+Invoke-Expression 'python -v'  *>&1 | Out-Null
+if(-not $LASTEXITCODE -eq 0){
     Write-Host "Could not run python3. Please validate that you have it installed correctly!"
-    exit 1
+    break
 }
 
-if (!(arm-none-eabi-objdump -v) | out-null){
+Invoke-Expression 'arm-none-eabi-objdump -v'  *>&1 | Out-Null
+if(-not $LASTEXITCODE -eq 0){
     Write-Host "Could not find arm-none-eabi-objdump. Please validate that it's installed and in PATH."
-    exit 1
+    break
 }
 
 Write-Host "Looks good!"

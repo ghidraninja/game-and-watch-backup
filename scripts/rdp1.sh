@@ -1,13 +1,6 @@
 #!/bin/bash
 
-
-if [[ $# -ne 1 ]]; then
-    echo "Usage: $0 <Adapter: jlink or stlink>"
-    exit 1
-fi
-
-ADAPTER=$1
-mkdir -p logs
+source config.sh $1
 
 echo "This will look your device! Are you sure? (Y/y)"
 read -n 1 -r
@@ -24,7 +17,7 @@ if ! shasum --check shasums/internal_flash_backup.bin.sha1 >/dev/null 2>&1; then
 fi
 
 echo "Locking device... (Takes up to 30 seconds.)"    
-if ! openocd -f openocd/interface_"$1".cfg \
+if ! ${OPENOCD} -f openocd/interface_"${ADAPTER}".cfg \
     -c "init;" \
     -c "halt;" \
     -f openocd/rdp1.cfg >>logs/rdp1_openocd.log 2>&1; then
