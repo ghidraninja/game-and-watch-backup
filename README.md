@@ -16,6 +16,11 @@ While we tested the scripts to our best ability, we can not guarantee that there
 Game & Watch damaged. Use these tools at your own risk. If you feel like you don't understand what you're doing it might be best to let someone with more experience help (and teach) you!
 Feel free to join our [discord channel](https://discord.gg/rE2nHVAKvn) and ask any support questions in *#game-and-watch-support*.
 
+## Read this first
+
+This manual is for developers, and not yet suitable for end-users. The goal is to enable other developers to be able to contribute to Game & Watch development, and hopefully eventually get to a point where we can release end-user instructions :)
+
+Please note that we recommend either a (full-size, not mini) J-Link/J-Link Edu, or an offical ST-Link. ST-Link clones have caused a lot of issues, please avoid them. Also please remove the battery before you continue.
 
 ## Connecting the debugger
 
