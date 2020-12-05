@@ -1,4 +1,7 @@
 Clear-Host
+Set-Location = $PSScriptRoot
+$path = $PSScriptRoot + "\backups"
+
 Write-Host "Instructions:"
 Write-Host "- Type in your Adapter"
 Write-Host "- Press and hold the power button"
@@ -19,7 +22,7 @@ $ShaITCM = "ca71a54c0a22cca5c6ee129faee9f99f3a346ca0"
 $pathITCM = $PSScriptRoot + "\backups\itcm_backup.bin"
 if (!(($pathShaITCM) = (Get-FileHash -Path $pathITCM -algorithm SHA1))){
   Write-Host "Failed to correctly dump ITCM. Restart Game & Watch and try again."
-  Exit 1
+  break
 }
 
 $in = $PSScriptRoot + "\backups\flash_backup.bin"
@@ -32,7 +35,7 @@ $ShaBackup = "eea70bb171afece163fb4b293c5364ddb90637ae"
 $pathfullBackup = $PSScriptRoot + "\backups\flash_backup_checksummed.bin"
 if(!(($pathShaBackup) = (Get-FileHash -Path $pathfullBackup -algorithm SHA1))){
   Write-Host "Failed to verify checksum. Try again."
-  Exit 1
+  break
 }
 
 Remove-Item -Path $out
