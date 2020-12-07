@@ -26,6 +26,11 @@ Please note that we recommend either a (full-size, not mini) J-Link/J-Link Edu, 
 
 When connecting the debugger ensrue that at least SWDIO, SWDCLK and GND are connected. Do *not* under any circumstances connect 3.3V to the VDD connection. If your debug probe (for example ST-Link clones) does not have a VTREF connector, just leave VDD unconnected. Connecting 3.3V to VDD will likely destroy your SPI flash.
 
+### Supported Debuggers
+
+Please either use an official ST-Link (not one of the small USB stick clones) or a full-size J-Link. Others might work, a lot of them do not work with the 1.9V logic levels used on the Game and Watch.
+
+Programmers we had a lot of trouble with: J-Link EDU Mini (does not work), cheap ST-Link clones.
 
 ### Ubuntu setup
 
