@@ -19,7 +19,7 @@ Feel free to join our [discord channel](https://discord.gg/rE2nHVAKvn) and ask a
 
 ## Connecting the debugger
 
-When connecting the debugger ensrue that at least SWDIO, SWDCLK and GND are connected. Do *not* under any circumstances connect 3.3V to the VDD connection. If your debug probe (for example ST-Link clones) does not have a VTREF connector, just leave VDD unconnected. Connecting 3.3V to VDD will likely destroy your SPI flash.
+When connecting the debugger ensure that at least SWDIO, SWDCLK and GND are connected. Do *not* under any circumstances connect 3.3V to the VDD connection. If your debug probe (for example ST-Link clones) does not have a VTREF connector, just leave VDD unconnected. Connecting 3.3V to VDD will likely destroy your SPI flash.
 
 
 ### Ubuntu setup
@@ -49,7 +49,7 @@ OPENOCD="/opt/openocd-git/bin/openocd" ; ./1_sanity_check.sh
 OPENOCD="/opt/openocd-git/bin/openocd" ; ./2_....
 ```
 
-Finally you could just hardwire some variables in 'config.sh'
+Finally, you could just hardwire some variables in 'config.sh'
 
 ### Mac Setup
 
