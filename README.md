@@ -90,6 +90,8 @@ As long as your electrical connections are right and you didn't short/overvolt a
 
 If a script fails and the device does not work after power-cycling, repeat the script. If it fails again, try to hold the power button of the device while executing the script.
 
+Also, as a first step, try to lower your adapter speed. When using stlink, you do this by adding `adapter speed 100` as the last line in `openocd/interface_stlink.cfg`.
+
 #### Something goes wrong during Step 1 & 2
 
 Your device was not modified by the scripts, so it should just continue to work after a power cycle.
