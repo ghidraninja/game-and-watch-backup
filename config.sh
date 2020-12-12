@@ -7,7 +7,7 @@ if [[ -z ${OPENOCD} ]]; then
   exit 2
 fi
 
-OPENOCD_VERSION=$(${OPENOCD} -v 2> >(cut -f 4 -d\\ ) |head -1)
+OPENOCD_VERSION=$(${OPENOCD} -v 2> >(cut -f 4 -d" " ) |head -1)
 ADAPTER=$1
 
 mkdir -p logs backups
