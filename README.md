@@ -8,6 +8,7 @@ What you'll need:
 - Connections to the [debug port](https://twitter.com/ghidraninja/status/1326860677353512960) - testclips or soldered wires work well!
 - A computer with Ubuntu 20.04 or compatible.
 
+Also see this video for a rough overview over how the scripts work: https://www.youtube.com/watch?v=-MzmoEFs0bQ
 
 ## Warnings & disclaimer
 
