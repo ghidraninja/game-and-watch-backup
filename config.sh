@@ -13,6 +13,6 @@ ADAPTER=$1
 mkdir -p logs backups
 
 if [[ $# -ne 1 ]] && [[ ! "$0" =~ .*"config.sh" ]]; then
-    echo "Usage: $0 <Adapter: jlink or stlink>"
+    echo "Usage: $0 <Adapter: jlink or stlink or rpi>"
     exit 1
 fi

@@ -3,7 +3,7 @@
 source config.sh $1
 
 if [[ $# -ne 1 ]]; then
-    echo "Usage: backup_flash.sh <Adapter: jlink or stlink>"
+    echo "Usage: backup_flash.sh <Adapter: jlink or stlink or rpi>"
     exit 1
 fi
 
