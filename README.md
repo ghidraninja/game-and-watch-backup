@@ -4,7 +4,7 @@ This repository contains pre-built tools for backing up & restoring the original
 
 What you'll need:
 - A Game & Watch in original state
-- An ARM debug probe (Tested with J-Link and ST-Link compatible devices)
+- An ARM debug probe (Tested with J-Link and ST-Link compatible devices) or a Raspberry Pi
 - Connections to the [debug port](https://twitter.com/ghidraninja/status/1326860677353512960) - testclips or soldered wires work well!
 - A computer with Ubuntu 20.04 or compatible.
 
@@ -32,6 +32,10 @@ When connecting the debugger ensure that at least SWDIO, SWDCLK and GND are conn
 Please either use an official ST-Link (not one of the small USB stick clones) or a full-size J-Link. Others might work, a lot of them do not work with the 1.9V logic levels used on the Game and Watch.
 
 Programmers we had a lot of trouble with: J-Link EDU Mini (does not work), cheap ST-Link clones.
+
+### Raspberry Pi host
+
+You can use a Raspberry Pi to back up your Game and Watch. In this case you should use a Raspbian install and follow the steps in the Ubuntu setup section but on Raspberry Pi. You need to use 3 wires: GPIO25 for SWCLK,GPIO24 for SWDIO and GND for GND (in BCM pinout notation) or you can hardcode your own gpios in openocd/rpi.cfg. A quick pinout reference on RPi can be seen by opening a terminal and running `pinout`.
 
 ### Ubuntu setup
 
@@ -104,7 +108,7 @@ Your device was not modified by the scripts, so it should just continue to work 
 Step 3 will change the internal flash of the device. If this step fails it will leave your device in a bricked state. To recover from it run:
 
 ```
-./scripts/flashloader.sh <stlink or jlink> ./backups/flash_backup.bin
+./scripts/flashloader.sh <stlink or jlink or rpi> ./backups/flash_backup.bin
 ```
 
 If the script can't connect to the device, press & hold down power on the device while running flashloader & try to FULLY powercycle the target between attempts.
