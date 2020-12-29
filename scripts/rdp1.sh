@@ -2,7 +2,7 @@
 
 source config.sh $1
 
-echo "This will look your device! Are you sure? (Y/y)"
+echo "This will lock your device! Are you sure? (Y/y)"
 read -n 1 -r
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
