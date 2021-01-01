@@ -3,7 +3,7 @@
 source config.sh $1
 
 echo "Unlocking your device will erase its internal flash. Even though your backup"
-echo "is validated, this still can go wrong. Are you sure? (Y/y)"
+echo "is validated, this still can go wrong. Are you sure? (y/N)"
 read -n 1 -r
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
