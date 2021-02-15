@@ -51,5 +51,3 @@ if ! ${OPENOCD} -f openocd/interface_"${ADAPTER}".cfg \
 fi
 
 echo "Success, your device should be running the original firmware again!"
-echo "(You should power-cycle the device now)"
-
