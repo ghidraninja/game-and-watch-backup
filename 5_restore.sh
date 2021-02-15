@@ -32,5 +32,24 @@ if ! ./scripts/flashloader.sh $ADAPTER backups/flash_backup.bin; then
     exit 1
 fi
 
+echo "Restart device. Continue? (y/N)"
+read -n 1 -r
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    echo "Success, your device should be running the original firmware again!"
+    echo "(You should power-cycle the device now)"
+    exit 1
+fi
+
+echo "Restarting device..."
+if ! ${OPENOCD} -f openocd/interface_"${ADAPTER}".cfg \
+    -c "init;" \
+    -c "reset run;" \
+    -c "exit;" >>logs/5_openocd-2.log 2>&1; then
+    echo "Reseting failed. Check debug connection and try again."
+    exit 1
+fi
+
 echo "Success, your device should be running the original firmware again!"
 echo "(You should power-cycle the device now)"
+
