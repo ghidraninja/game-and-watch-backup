@@ -9,6 +9,21 @@ if test -f backups/internal_flash_backup.bin; then
     exit 1
 fi
 
+if ! dd if=backups/flash_backup.bin of=backups/flash_backup_checksummed.bin count=1016 bs=1024 >/dev/null 2>&1; then
+    echo "Failed to access flash_backup.bin"
+    echo "Please run ./2_backup_flash.sh again"
+    exit 1
+fi
+
+if ! shasum --check shasums/flash_backup_checksummed.bin.sha1 >/dev/null 2>&1; then
+    echo "*** External flash backup does not verify correctly ***"
+    echo "Please run ./2_backup_flash.sh again"
+    rm backups/flash_backup_checksummed.bin
+    exit 1
+fi
+
+rm backups/flash_backup_checksummed.bin
+
 echo "This step will overwrite the contents of the SPI flash chip that we backed up in step 2."
 echo "It will be restored in step 5. Continue? (y/N)"
 read -n 1 -r
