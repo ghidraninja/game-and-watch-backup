@@ -70,6 +70,16 @@ STR      R1, [R0, #0x24]
 MOVS     R1, #0
 STR      R1, [R0, #0x2C]
 
+// DAC1->DHR12R1 = 0xAD2;
+// DAC1->DHR12R2 = 0xAD2;
+// DAC2->DHR12R1 = 0xAD2;
+LDR      R0, =0x40007400
+MOV      R1, #0xAD2
+STR      R1, [R0, #0x08]
+STR      R1, [R0, #0x14]
+LDR      R0, =0x58003400
+STR      R1, [R0, #0x08]
+
 // uint32_t *src = (uint32_t*)0x08000000;
 // uint32_t *dst = (uint32_t*)0x24000000;
 // for (int len = 0; len < 0x20000 / 4; len++)
