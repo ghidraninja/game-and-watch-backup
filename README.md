@@ -85,7 +85,7 @@ The scripts are split into 5 parts:
 - 2_backup_flash.sh - Backs up the contents of the SPI flash. Does not modify device contents.
 - 3_backup_internal_flash.sh - Backs up the internal flash. To do this the contents of the SPI flash are modified. Your device will stop working until it's restored in step 5.
 - 4_unlock_device.sh - This will disable the active read protection. This will erase the internal flash of the STM32.
-- 5_restore.sh - This will restore the original firmware.
+- 5_restore.sh - This will restore the original firmware. You can use the -r flag after the debugger option to auto reset the device (note, your debugger must have the reset line connected to the SWD, otherwise you must power cycle the device).
 
 Just run these scripts *from the checked out directory* one after each other. All scripts are safe to be re-run in case of error.
 
