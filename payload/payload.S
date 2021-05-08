@@ -45,21 +45,18 @@ foo:
 	nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;
 
 
+/* Init part */
+mov r0, #0 /* Used for word alignement */
+mov r3, #0
+ldr r0, src 
+ldr r1, dst 
 
-mov r2, #0
-mov r4, #4
+/* Actual data copy part */
 loop:
-    ldr r0, src
-    ldr r1, dst
-
-    add r0, r0, r2
-    add r1, r1, r2
-
-    ldr r3, [r0]
-    str r3, [r1]
-
-	add r2, r2, r4
-
+	ldr r3, [r0, r3]
+	str r3, [r1, r3]
+	
+	add r3, #4
     b loop
 
 src: .long 0x08000000
