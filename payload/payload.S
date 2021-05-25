@@ -1,3 +1,7 @@
+// To compile:
+// arm-none-eabi-as payload.S -march=armv7e-m -o payload.elf
+// arm-none-eabi-objcopy -O binary payload.elf payload.bin
+
 .syntax unified
 
 .section .text
