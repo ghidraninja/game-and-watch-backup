@@ -42,7 +42,7 @@ You can use a Raspberry Pi to back up your Game and Watch. In this case you shou
 Install the required tools:
 
 ```
-sudo apt-get install gcc-arm-none-eabi binutils-arm-none-eabi python3 libftdi1
+sudo apt-get install binutils-arm-none-eabi python3 libftdi1
 ```
 
 Note: The version of openocd included in Ubuntu 20.04 (0.10.0) does not include functionality that is needed by these scripts. A build from the unreleased master branch is needed. Please install a newer version either by building it yourself, or by installing a prebuilt package, e.g. from [this nightly build](https://github.com/kbeckmann/ubuntu-openocd-git-builder), using [xPack](https://xpack.github.io/openocd/) or similar.
