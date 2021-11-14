@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source config.sh placeHolder
+source config.sh $@
 
 echo "Running sanity checks..."
 if ! ${OPENOCD} -v >/dev/null 2>&1; then

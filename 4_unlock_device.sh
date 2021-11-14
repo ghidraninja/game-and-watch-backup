@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source config.sh $1
+source config.sh $@
 
 echo "Unlocking your device will erase its internal flash. Even though your backup"
 echo "is validated, this still can go wrong. Are you sure? (y/N)"
@@ -12,13 +12,13 @@ then
 fi
 
 echo "Validating internal flash backup before proceeding..."
-if ! shasum --check shasums/internal_flash_backup.bin.sha1 >/dev/null 2>&1; then
+if ! shasum --check shasums/internal_flash_backup_${TARGET}.bin.sha1 >/dev/null 2>&1; then
     echo "Backup is not valid. Aborting."
     exit 1
 fi
 
 echo "Unlocking device... (Takes up to 30 seconds.)"    
-if ! ${OPENOCD} -f openocd/interface_"${ADAPTER}".cfg \
+if ! ${OPENOCD} -f "openocd/interface_${ADAPTER}.cfg" \
     -c "init;" \
     -c "halt;" \
     -f openocd/rdp0.cfg >>logs/4_openocd.log 2>&1; then

@@ -1,6 +1,6 @@
 # Game and Watch Backup and Restore tools
 
-This repository contains pre-built tools for backing up & restoring the original Game and Watch firmware.
+This repository contains pre-built tools for backing up & restoring the original Game and Watch firmware. Both the Mario and Zelda variants are supported.
 
 What you'll need:
 - A Game & Watch in original state
@@ -26,6 +26,8 @@ Please note that we recommend either a (full-size, not mini) J-Link/J-Link Edu, 
 ## Connecting the debugger
 
 When connecting the debugger ensure that at least SWDIO, SWDCLK and GND are connected. Do *not* under any circumstances connect 3.3V to the VDD connection. If your debug probe (for example ST-Link clones) does not have a VTREF connector, just leave VDD unconnected. Connecting 3.3V to VDD will likely destroy your SPI flash.
+
+The debug connector of the Zelda variant shares pinout with the Mario variant, but has two extra connections (PB3 and N/C). The small triangle points to pin 1.
 
 ### Supported Debuggers
 
@@ -108,7 +110,7 @@ Your device was not modified by the scripts, so it should just continue to work 
 Step 3 will change the internal flash of the device. If this step fails it will leave your device in a bricked state. To recover from it run:
 
 ```
-./scripts/flashloader.sh <stlink or jlink or rpi> ./backups/flash_backup.bin
+./restore_only_external_flash.sh <stlink or jlink or rpi> <mario or zelda>
 ```
 
 If the script can't connect to the device, press & hold down power on the device while running flashloader & try to FULLY powercycle the target between attempts.
@@ -131,10 +133,3 @@ Other channels:
 - *#replacement-pcb* In here we discuss the possibilities and development of replacement PCBs for the Game and Watch.
 - [game-and-watch-hacking wiki](https://github.com/ghidraninja/game-and-watch-hacking/wiki) A reference wiki all things hacking the Game & Watch. Including internals.
 
-
-## Sources for binaries
-
-The binaries in firmware/ are based on:
-
-- [flashloader](https://github.com/ghidraninja/game-and-watch-flashloader)
-- [flashdumper](https://github.com/ghidraninja/game-and-watch-flashdumper)
