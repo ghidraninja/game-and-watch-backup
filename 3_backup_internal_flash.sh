@@ -22,6 +22,13 @@ if ! shasum --check shasums/flash_backup_checksummed_${TARGET}.bin.sha1 >/dev/nu
     exit 1
 fi
 
+echo "Validating ITCM dump..."
+if ! shasum --check shasums/itcm_backup_${TARGET}.bin.sha1 >/dev/null 2>&1; then
+    echo "*** ITCM dump does not verify correctly ***"
+    echo "Please run ./2_backup_flash.sh again"
+    exit 1
+fi
+
 rm -f backups/flash_backup_checksummed_${TARGET}.bin
 
 echo "This step will overwrite the contents of the SPI flash chip that we backed up in step 2."
