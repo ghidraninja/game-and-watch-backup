@@ -64,10 +64,10 @@ fi
 echo "Flash successfully programmed. Now do the following procedure:"
 echo "- Disconnect power from the device"
 echo "- Power it again"
-echo "- Press the power button on the device"
+echo "- Press and hold the power button on the device"
 echo "- The LCD should show a blue screen"
 echo "- If it's not blue, you can try pressing the Time button on the device"
-echo "- Press return"
+echo "- Press return (while still holding the power button)!"
 
 
 read -n 1
