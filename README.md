@@ -36,7 +36,7 @@ You can use a Raspberry Pi to back up your Game and Watch. In this case you shou
 
 ### Ubuntu setup
 
-Install the required tools:
+Install the required tools (Press "Y" for yes, if/when asked "Do you want to continue" and press the "Enter" key):
 
 ```
 sudo apt-get install binutils-arm-none-eabi python3 libhidapi-hidraw0 libftdi1 libftdi1-2
