@@ -39,14 +39,22 @@ You can use a Raspberry Pi to back up your Game and Watch. In this case you shou
 Install the required tools (Press "Y" for yes, if/when asked "Do you want to continue" and press the "Enter" key):
 
 ```
-sudo apt-get install binutils-arm-none-eabi python3 libhidapi-hidraw0 libftdi1 libftdi1-2
+sudo apt-get install git binutils-arm-none-eabi python3 libhidapi-hidraw0 libftdi1 libftdi1-2
 ```
+
+# Clone this repo with submodules:
+
+```
+git clone --recurse-submodules https://github.com/DNA64/game-and-watch-backup
+cd game-and-watch-backup
+```
+
 
 Note: The version of openocd included in Ubuntu 20.04 (0.10.0) does not include functionality that is needed by these scripts. A build from the unreleased master branch is needed. Please install a newer version either by building it yourself, or by installing a prebuilt package, e.g. from [this nightly build](https://github.com/kbeckmann/ubuntu-openocd-git-builder), using [xPack](https://xpack.github.io/openocd/) or similar.
 
 ### Alternative openocd location
 
-If you used the aforementioned nightly openocd build, it will reside in the /opt directory.
+If you used the aforementioned nightly openocd build, it will reside in the /opt directory as shown below.
 
 To use that specific version you can either export the variable OPENOCD or prefix your commands with the variable declaration:
 
@@ -61,7 +69,8 @@ OPENOCD="/opt/openocd-git/bin/openocd" ; ./1_sanity_check.sh
 OPENOCD="/opt/openocd-git/bin/openocd" ; ./2_....
 ```
 
-Finally, you could just hardwire some variables in 'config.sh'
+Finally, you could just hardwire some variables in the 'config.sh' file.
+
 
 ### Mac Setup
 
