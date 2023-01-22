@@ -3,10 +3,10 @@
 This repository contains pre-built tools for backing up & restoring the original Game and Watch firmware. Both the Mario and Zelda variants are supported.
 
 What you'll need:
-- A Game & Watch in original state
+- A Limited Edition Game & Watch, either the Super Mario Bros. edition released in 2020 or The Legend of Zelda edition released in 2021 in thier original state
 - An ARM debug probe (Tested with J-Link and ST-Link compatible devices) or a Raspberry Pi
 - Connections to the [debug port](https://twitter.com/ghidraninja/status/1326860677353512960) - testclips or soldered wires work well!
-- A computer with Ubuntu 20.04 or compatible.
+- A computer running Ubuntu 20.04 or compatible Linux distro. You can also use a Virtual Machine such as Virtual Box under Windows or MacOS.
 
 Also see this video for a rough overview over how the scripts work: https://www.youtube.com/watch?v=-MzmoEFs0bQ
 
@@ -15,13 +15,8 @@ Also see this video for a rough overview over how the scripts work: https://www.
 The tools in this repository will modify both the internal and the external flash of the Game and Watch.
 While we tested the scripts to our best ability, we can not guarantee that there won't be failures that will leave your
 Game & Watch damaged. Use these tools at your own risk. If you feel like you don't understand what you're doing it might be best to let someone with more experience help (and teach) you!
-Feel free to join our [discord channel](https://discord.gg/rE2nHVAKvn) and ask any support questions in *#game-and-watch-support*.
+Feel free to join our [discord channel](https://discord.gg/rE2nHVAKvn) and ask any support questions in *#game-and-watch-support*. You can also checkout the [reddit community](https://www.reddit.com/r/GameAndWatchMods/) with over 2000 Members
 
-## Read this first
-
-This manual is for developers, and not yet suitable for end-users. The goal is to enable other developers to be able to contribute to Game & Watch development, and hopefully eventually get to a point where we can release end-user instructions :)
-
-Please note that we recommend either a (full-size, not mini) J-Link/J-Link Edu, or an offical ST-Link. ST-Link clones have caused a lot of issues, please avoid them. Also please disconnect the battery before you continue.
 
 ## Connecting the debugger
 
@@ -31,9 +26,9 @@ The debug connector of the Zelda variant shares pinout with the Mario variant, b
 
 ### Supported Debuggers
 
-Please either use an official ST-Link (not one of the small USB stick clones) or a full-size J-Link. Others might work, a lot of them do not work with the 1.9V logic levels used on the Game and Watch.
+For best results please either use a full sizzed official ST-Link or a STM32 Nucleo device (not one of the small USB stick clones which can be hit or miss) or a full-size J-Link debug probe. There are others that work, but many of them do not work with the 1.9V logic levels used on the Game and Watch.
 
-Programmers we had a lot of trouble with: J-Link EDU Mini (does not work), cheap ST-Link clones.
+Programmers some users have reported having trouble with are: J-Link EDU Mini, cheap ST-Link clones (with the later likely do to changing pinouts or different chipsets).
 
 ### Raspberry Pi host
 
