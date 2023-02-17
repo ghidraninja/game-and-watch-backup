@@ -26,5 +26,8 @@ if ! ${OPENOCD} -f "openocd/interface_${ADAPTER}.cfg" \
     exit 1
 fi
 
-echo "Congratulations, your device has been unlocked."
-echo "Please power-cycle it for the changes to take full effect."
+echo "Congratulations, your device has been unlocked. Just a few more steps!"
+echo "- The Game & Watch will not yet be functional"
+echo "- Disconnect power from the device for the changes to take full effect"
+echo "- Power it again"
+echo "- Run the 5_restore.sh script to restore the SPI and Internal Flash."
