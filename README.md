@@ -45,7 +45,7 @@ sudo apt-get install git binutils-arm-none-eabi python3 libhidapi-hidraw0 libftd
 # Clone this repo with submodules:
 
 ```
-git clone --recurse-submodules https://github.com/DNA64/game-and-watch-backup
+git clone --recurse-submodules https://github.com/ghidraninja/game-and-watch-backup
 cd game-and-watch-backup
 ```
 
