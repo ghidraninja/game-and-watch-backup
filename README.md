@@ -3,8 +3,8 @@
 This repository contains pre-built tools for backing up & restoring the original Game and Watch firmware. Both the Mario and Zelda variants are supported.
 
 What you'll need:
-- A Limited Edition Game & Watch, either the Super Mario Bros. edition released in 2020 or The Legend of Zelda edition released in 2021 in thier original state
-- An ARM debug probe (Tested with J-Link and ST-Link compatible devices) or a Raspberry Pi
+- A Limited Edition Game & Watch, either the Super Mario Bros. edition released in 2020 or The Legend of Zelda edition released in 2021 in their original state
+- An ARM debug probe (Tested with J-Link and ST-Link compatible devices), a Raspberry Pi, or a CMSIS-DAP debugger like a [Raspberry Pi Debug Probe](https://www.raspberrypi.com/products/debug-probe/)/[Picoprobe](https://github.com/raspberrypi/picoprobe) or a Flipper Zero
 - Connections to the [debug port](https://twitter.com/ghidraninja/status/1326860677353512960) - testclips or soldered wires work well!
 - A computer running Ubuntu 20.04 or compatible Linux distro. You can also use a Virtual Machine such as Virtual Box under Windows or MacOS.
 
@@ -26,13 +26,32 @@ The debug connector of the Zelda variant shares pinout with the Mario variant, b
 
 ### Supported Debuggers
 
-For best results please either use a full sizzed official ST-Link or a STM32 Nucleo device (not one of the small USB stick clones which can be hit or miss) or a full-size J-Link debug probe. There are others that work, but many of them do not work with the 1.9V logic levels used on the Game and Watch.
+For best results please either use a full sized official ST-Link or a STM32 Nucleo device (not one of the small USB stick clones which can be hit or miss), a full-size J-Link debug probe, or a CMSIS-DAP debugger like a Raspberry Pi Debug Probe/Picoprobe or a Flipper Zero. There are others that work, but many of them do not work with the 1.9V logic levels used on the Game and Watch.
 
 Programmers some users have reported having trouble with are: J-Link EDU Mini, cheap ST-Link clones (with the later likely do to changing pinouts or different chipsets).
 
 ### Raspberry Pi host
 
 You can use a Raspberry Pi to back up your Game and Watch. In this case you should use a Raspbian install and follow the steps in the Ubuntu setup section but on Raspberry Pi. You need to use 3 wires: GPIO25 for SWCLK,GPIO24 for SWDIO and GND for GND (in BCM pinout notation) or you can hardcode your own gpios in openocd/rpi.cfg. A quick pinout reference on RPi can be seen by opening a terminal and running `pinout`.
+
+### Raspberry Pi Debug Probe and Picoprobe
+
+You can use a Raspberry Pi Debug Probe or self-assembled Picoprobe. Both run the same firmware and implement the CMSIS-DAP protocol. The Debug Probe has a connector attached to three male header pins. The orange wire is SWCLK, black is GND, and yellow is SWDIO.
+
+Specify `cmsis-dap` as the adapter type when running the scripts from this repo.
+
+### Flipper Zero
+
+You can use a Flipper Zero and its DAP Link app. As of firmware version 0.89 and newer, you will need to install the DAP Link app on your Flipper Zero through its companion mobile app. 
+
+<details>
+<summary>How to install the DAP Link app</summary>
+[Pair](https://docs.flipper.net/mobile-app) the companion mobile app with your Flipper Zero. In the mobile app, go to the app directory on the "Hub" tab. Find the "GPIO" category, browse for the "DAP Link" app inside it, and tap "Install".
+</details>
+
+From the Flipper Zero's main menu, navigate to Apps → GPIO → DAP Link. The DAP Link app has a Config menu that specifies which of the Flipper Zero's GPIO pins correspond to SWC (SWCLK) and SWD (SWDIO). The pins are also documented under "Help and Pinout" in the Config menu. Use one of the Flipper Zero's GPIO GND pins to connect to GND on the Game & Watch.
+
+Specify `cmsis-dap` as the adapter type when running the scripts from this repo.
 
 ### Ubuntu setup
 
