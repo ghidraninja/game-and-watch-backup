@@ -127,6 +127,12 @@ Step 4 will cause a mass erase, and leave your device empty. To restore it, run 
 
 Step 5 should succeed, if it doesn't: Try to run the script while holding down the power button of the Game & Watch. Try power-cycling the target in between attempts.
 
+If you replaced the SPI flash with a bigger size then also try :
+
+```
+LARGE_FLASH=1 ./5_restore.sh <stlink or jlink or rpi> <mario or zelda>
+```
+
 ### Getting help and contributing
 
 Feel free to join our [discord channel](https://discord.gg/rE2nHVAKvn) and ask any support questions in *#game-and-watch-support*.

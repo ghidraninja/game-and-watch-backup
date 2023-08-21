@@ -23,22 +23,29 @@ fi
 
 echo "Ok, restoring original firmware! (We will not lock the device, so you won't have to repeat this procedure!)"
 
-echo "Restoring SPI flash..."
+if [[ $LARGE_FLASH == "1" ]]; then
+    echo "Restoring large SPI flash (no verify)..."
+    # verify is broken on large flashes
+    VERIFY_CMD=""
+else
+    echo "Restoring SPI flash..."
+    VERIFY_CMD="verify"
+fi
 if ! ${OPENOCD} -f "openocd/target_${TARGET}.cfg" -f "openocd/interface_${ADAPTER}.cfg" \
     -c "init;" \
     -c "halt;" \
-    -c "program backups/flash_backup_${TARGET}.bin 0x90000000 verify;" \
+    -c "program backups/flash_backup_${TARGET}.bin 0x90000000 ${VERIFY_CMD};" \
     -c "exit;" >>logs/5_openocd.log 2>&1; then
     echo "Restoring SPI flash failed. Check debug connection and try again."
     exit 1
 fi
-
 
 echo "Restoring internal flash..."
 if ! ${OPENOCD} -f "openocd/target_${TARGET}.cfg" -f "openocd/interface_${ADAPTER}.cfg" \
     -c "init;" \
     -c "halt;" \
     -c "program backups/internal_flash_backup_${TARGET}.bin 0x08000000 verify;" \
+    -c "reset;" \
     -c "exit;" >>logs/5_openocd.log 2>&1; then
     echo "Restoring internal flash failed. Check debug connection and try again."
     exit 1
