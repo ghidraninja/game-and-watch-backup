@@ -30,7 +30,7 @@ For best results please either use a full sized official ST-Link or a STM32 Nucl
 
 Programmers some users have reported having trouble with are: J-Link EDU Mini, cheap ST-Link clones (with the later likely do to changing pinouts or different chipsets).
 
-You can also use a Raspberry Pi PICO, running with picoprobe firmware (which you can find [here](https://github.com/raspberrypi/picoprobe/releases)). Connect GP2 to SWDCLK, GP3 to SWDIO and GND to any GND point in the G&W. Use ADAPTER=pico with all scripts.
+You can also use a Raspberry Pi PICO, running with picoprobe firmware (which you can find [here](https://github.com/raspberrypi/picoprobe/releases)). Connect GP2 to SWDCLK, GP3 to SWDIO and GND to any GND point in the G&W. Use 'pico' as adapter name with all scripts.
 
 ### Raspberry Pi host
 
@@ -116,7 +116,7 @@ Your device was not modified by the scripts, so it should just continue to work 
 Step 3 will change the internal flash of the device. If this step fails it will leave your device in a bricked state. To recover from it run:
 
 ```
-./restore_only_external_flash.sh <stlink or jlink or rpi> <mario or zelda>
+./restore_only_external_flash.sh <stlink or jlink or rpi or pico> <mario or zelda>
 ```
 
 If the script can't connect to the device, press & hold down power on the device while running flashloader & try to FULLY powercycle the target between attempts.
@@ -132,7 +132,7 @@ Step 5 should succeed, if it doesn't: Try to run the script while holding down t
 If you replaced the SPI flash with a bigger size then also try :
 
 ```
-LARGE_FLASH=1 ./5_restore.sh <stlink or jlink or rpi> <mario or zelda>
+LARGE_FLASH=1 ./5_restore.sh <stlink or jlink or rpi or pico> <mario or zelda>
 ```
 
 ### Getting help and contributing
