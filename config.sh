@@ -8,7 +8,7 @@ if [[ -z ${OPENOCD} ]]; then
 fi
 
 helptext() {
-  echo "Usage: $0 <Adapter: jlink or stlink or rpi> <mario or zelda>"
+  echo "Usage: $0 <Adapter: jlink or stlink or rpi or pico> <mario or zelda>"
 }
 
 OPENOCD_VERSION=$(${OPENOCD} -v 2> >(cut -f 4 -d" " ) |head -1)
