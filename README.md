@@ -30,11 +30,13 @@ For best results please either use a full sized official ST-Link or a STM32 Nucl
 
 Programmers some users have reported having trouble with are: J-Link EDU Mini, cheap ST-Link clones (with the later likely do to changing pinouts or different chipsets).
 
-You can also use a Raspberry Pi PICO, running with picoprobe firmware (which you can find [here](https://github.com/raspberrypi/picoprobe/releases)). Connect GP2 to SWDCLK, GP3 to SWDIO and GND to any GND point in the G&W. Use 'pico' as adapter name with all scripts.
-
 ### Raspberry Pi host
 
 You can use a Raspberry Pi to back up your Game and Watch. In this case you should use a Raspbian install and follow the steps in the Ubuntu setup section but on Raspberry Pi. You need to use 3 wires: GPIO25 for SWCLK,GPIO24 for SWDIO and GND for GND (in BCM pinout notation) or you can hardcode your own gpios in openocd/rpi.cfg. A quick pinout reference on RPi can be seen by opening a terminal and running `pinout`.
+
+### Raspberry Pi PICO
+
+You can also use a Raspberry Pi PICO, running with picoprobe firmware (which you can find [here](https://github.com/raspberrypi/picoprobe/releases)). Connect GP2 to SWDCLK, GP3 to SWDIO and GND to any GND point in the G&W. Use 'pico' as adapter name with all scripts.
 
 ### Ubuntu setup
 
