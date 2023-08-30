@@ -26,9 +26,11 @@ The debug connector of the Zelda variant shares pinout with the Mario variant, b
 
 ### Supported Debuggers
 
-For best results please either use a full sizzed official ST-Link or a STM32 Nucleo device (not one of the small USB stick clones which can be hit or miss) or a full-size J-Link debug probe. There are others that work, but many of them do not work with the 1.9V logic levels used on the Game and Watch.
+For best results please either use a full sized official ST-Link or a STM32 Nucleo device (not one of the small USB stick clones which can be hit or miss) or a full-size J-Link debug probe. There are others that work, but many of them do not work with the 1.9V logic levels used on the Game and Watch.
 
 Programmers some users have reported having trouble with are: J-Link EDU Mini, cheap ST-Link clones (with the later likely do to changing pinouts or different chipsets).
+
+You can also use a Raspberry Pi PICO, running with picoprobe firmware (which you can find [here](https://github.com/raspberrypi/picoprobe/releases)). Connect GP2 to SWDCLK, GP3 to SWDIO and GND to any GND point in the G&W. Use ADAPTER=pico with all scripts.
 
 ### Raspberry Pi host
 
