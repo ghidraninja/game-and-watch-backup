@@ -46,6 +46,7 @@ You can use a Flipper Zero and its DAP Link app. As of firmware version 0.89 and
 
 <details>
 <summary>How to install the DAP Link app</summary>
+
 [Pair](https://docs.flipper.net/mobile-app) the companion mobile app with your Flipper Zero. In the mobile app, go to the app directory on the "Hub" tab. Find the "GPIO" category, browse for the "DAP Link" app inside it, and tap "Install".
 </details>
 
