@@ -25,4 +25,10 @@ if ! arm-none-eabi-objdump -v >/dev/null 2>&1; then
     exit 1
 fi
 
+if ! sha1sum --version >/dev/null 2>&1; then
+    echo "Could not find sha1sum. Is your environment set up correctly?"
+    echo " It may need to be installed separately."
+    exit 1
+fi
+
 echo "Looks good!"

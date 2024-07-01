@@ -11,7 +11,7 @@ then
 fi
 
 echo "Validating internal flash backup before proceeding..."
-if ! shasum --check shasums/internal_flash_backup_$TARGET.bin.sha1 >/dev/null 2>&1; then
+if ! sha1sum --check shasums/internal_flash_backup_$TARGET.bin.sha1 >/dev/null 2>&1; then
     echo "Backup is not valid. Aborting."
     exit 1
 fi

@@ -15,7 +15,7 @@ if ! dd if=backups/flash_backup_${TARGET}.bin of=backups/flash_backup_checksumme
     exit 1
 fi
 
-if ! shasum --check shasums/flash_backup_checksummed_${TARGET}.bin.sha1 >/dev/null 2>&1; then
+if ! sha1sum --check shasums/flash_backup_checksummed_${TARGET}.bin.sha1 >/dev/null 2>&1; then
     echo "*** External flash backup does not verify correctly ***"
     echo "Please run ./2_backup_flash.sh again"
     rm backups/flash_backup_checksummed.bin
@@ -23,7 +23,7 @@ if ! shasum --check shasums/flash_backup_checksummed_${TARGET}.bin.sha1 >/dev/nu
 fi
 
 echo "Validating ITCM dump..."
-if ! shasum --check shasums/itcm_backup_${TARGET}.bin.sha1 >/dev/null 2>&1; then
+if ! sha1sum --check shasums/itcm_backup_${TARGET}.bin.sha1 >/dev/null 2>&1; then
     echo "*** ITCM dump does not verify correctly ***"
     echo "Please run ./2_backup_flash.sh again"
     exit 1
@@ -83,7 +83,7 @@ if ! ${OPENOCD} -f "openocd/interface_${ADAPTER}.cfg" \
 fi
 
 echo "Verifying internal flash backup..."
-if ! shasum --check shasums/internal_flash_backup_${TARGET}.bin.sha1 >/dev/null 2>&1; then
+if ! sha1sum --check shasums/internal_flash_backup_${TARGET}.bin.sha1 >/dev/null 2>&1; then
     echo "The backup of the internal flash failed. Please try again."
     exit 1
 fi

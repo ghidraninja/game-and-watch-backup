@@ -21,7 +21,7 @@ if ! ${OPENOCD} \
 fi
 
 echo "Validating ITCM dump..."
-if ! shasum --check shasums/itcm_backup_${TARGET}.bin.sha1 >/dev/null 2>&1; then
+if ! sha1sum --check shasums/itcm_backup_${TARGET}.bin.sha1 >/dev/null 2>&1; then
     echo "Failed to correctly dump ITCM. Restart Game & Watch and try again."
     exit 1
 fi
@@ -37,7 +37,7 @@ if ! dd if=backups/flash_backup_${TARGET}.bin of=backups/flash_backup_checksumme
 fi
 
 echo "Validating checksum..."
-if ! shasum --check shasums/flash_backup_checksummed_${TARGET}.bin.sha1 >/dev/null 2>&1; then
+if ! sha1sum --check shasums/flash_backup_checksummed_${TARGET}.bin.sha1 >/dev/null 2>&1; then
     echo "Failed to verify checksum of the external flash. Try again."
     exit 1
 fi
